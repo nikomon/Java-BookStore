@@ -14,16 +14,23 @@
 	</ul>
 
 <div class="container">
-    <form name="book_form" method="post" action="insert">
-    <h2>
-        New Book Form
-    </h2>
+    <c:if test="${book != null}">
+    	<form name="book_form" method="post" action="update">
+		<h2>Edit Book Form</h2>
+	</c:if>
+	<c:if test="${book == null}">
+		<form name="book_form" method="post" action="insert">
+		<h2>New Book Form</h2>
+	</c:if>	
+	<c:if test="${book != null}">
+		<input type="hidden" name="id" value="${ book.getId() }"></p>
+	</c:if>
 	  <p><label>Title:</label>
-    <input type="text" name="booktitle" /></p>
+    <input type="text" name="booktitle" value="${ book.getTitle() }"></p>
 	  <p><label>Author:</label>
-    <input type="text" name="bookauthor" /></p>
+    <input type="text" name="bookauthor" value="${ book.getAuthor() }"></p>
     <p><label>Price:</label>
-    <input type="text" name="bookprice" /></p>
+    <input type="text" name="bookprice" value="${ book.getPrice() }"/></p>
 	  <p><input type="submit" value="Submit"></p>
 	</form>
 	</div>
